@@ -34,7 +34,7 @@ const useTextToSpeech = (language: Language) => {
     };
 
     utterance.onerror = (event) => {
-      console.error('SpeechSynthesisUtterance.onerror', event);
+      console.error('Speech synthesis error:', event.error);
       setIsSpeaking(false);
       setCurrentlySpeakingId(null);
     };
