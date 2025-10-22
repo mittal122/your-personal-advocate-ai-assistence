@@ -139,21 +139,21 @@ const AdvocateScreen: React.FC<AdvocateScreenProps> = ({ language, addHistoryIte
         }
       };
 
-      const AdviceCard: React.FC<{title: string; content: string; icon: React.ReactNode; titleColorClass: string}> = ({ title, content, icon, titleColorClass }) => {
+      const AdviceCard: React.FC<{title: string; content: string; icon: React.ReactNode; titleColorClass: string; borderColorClass: string}> = ({ title, content, icon, titleColorClass, borderColorClass }) => {
         if (!content) return null;
 
         const bulletPoints = content.split('\n').map(line => line.trim().replace(/^- /, '')).filter(line => line);
 
         return (
-            <div className="bg-gray-800 rounded-lg p-3 border border-gray-600">
-                <div className="flex items-center mb-2">
+            <div className={`bg-gray-800/50 rounded-lg p-4 border-l-4 ${borderColorClass}`}>
+                <div className="flex items-center mb-3">
                     {icon}
                     <h3 className={`font-semibold text-lg ml-2 ${titleColorClass}`}>{title}</h3>
                 </div>
-                <ul className="space-y-1.5 text-gray-200">
+                <ul className="space-y-2 text-gray-200">
                     {bulletPoints.map((point, index) => (
                         <li key={index} className="flex items-start">
-                           <span className="mr-2 mt-1 text-gray-500 flex-shrink-0">&bull;</span>
+                           <span className="mr-3 mt-1.5 text-gray-500 flex-shrink-0">&#8226;</span>
                            <span>{point}</span>
                         </li>
                     ))}
@@ -163,24 +163,27 @@ const AdvocateScreen: React.FC<AdvocateScreenProps> = ({ language, addHistoryIte
       };
 
       return (
-          <div className="space-y-3">
+          <div className="space-y-4">
               <AdviceCard 
                   title={UI_STRINGS.whatToSay[language]}
                   content={parsed.whatToSay}
                   icon={<ChatBubbleOvalLeftEllipsisIcon className="h-6 w-6 text-blue-300" />}
                   titleColorClass="text-blue-300"
+                  borderColorClass="border-blue-500"
               />
               <AdviceCard 
                   title={UI_STRINGS.whatToDo[language]}
                   content={parsed.whatToDo}
                   icon={<CheckCircleIcon className="h-6 w-6 text-green-300" />}
                   titleColorClass="text-green-300"
+                  borderColorClass="border-green-500"
               />
               <AdviceCard 
                   title={UI_STRINGS.whatNotToDo[language]}
                   content={parsed.whatNotToDo}
                   icon={<XCircleIcon className="h-6 w-6 text-red-300" />}
                   titleColorClass="text-red-300"
+                  borderColorClass="border-red-500"
               />
 
               {sources && sources.length > 0 && (
