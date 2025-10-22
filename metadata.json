@@ -1,0 +1,7 @@
+{
+  "name": "Know Your Rights - Personal Advocate",
+  "description": "An AI-powered personal advocate providing real-time guidance and legal information during interactions with authority figures. Features include an instant advocate, a fine verifier, a rights library, and secure local history, with multilingual voice and audio support.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
